@@ -1,0 +1,8 @@
+C:\Programming\Local_projects\Assignment 2\binarySearch.c: In function 'binarySearch':
+C:\Programming\Local_projects\Assignment 2\binarySearch.c:8:7: warning: implicit declaration of function 'print' [-Wimplicit-function-declaration]
+       print( ">%d \n",arr[middle]);
+       ^~~~~
+C:\Users\triti\AppData\Local\Temp\ccJxq9Hs.o:binarySearch.c:(.text+0x60): undefined reference to `print'
+C:\Users\triti\AppData\Local\Temp\ccJxq9Hs.o:binarySearch.c:(.text+0xb7): undefined reference to `print'
+collect2.exe: error: ld returned 1 exit statusdsdasd
+dsdae 
