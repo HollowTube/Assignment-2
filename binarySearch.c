@@ -24,6 +24,6 @@ int binarySearch(int goal, int arr[]){
 }
 int main(int argc, char const *argv[]) {
   int num[10] = {1,12,25,45,46,68,79,100,145,167};
-  binarySearch(100, num);
+  binarySearch(101, num);
   return 0;
 }
