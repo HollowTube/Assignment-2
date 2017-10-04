@@ -1,5 +1,5 @@
 #include<stdio.h>
-int num[10] = {15,98,160,1341,69,12,12,16,14,23};
+int num[20] = {15,98,160,1341,69,12,12,16,14,23,153,256,20,485,264,985,1002,521,785,111};
 int swap(int a, int b, int arr[]){
   int temp = arr[a];
   arr[a] = arr[b];
@@ -25,7 +25,7 @@ int pivot(int left, int right, int arr[]){
     }
   }
   swap(left, i, arr);
-  for (int i=0; i < 10; i ++){
+  for (int i=0; i < 20; i ++){
     printf("%d ", num[i]);
   }
   printf("\n");
@@ -34,19 +34,16 @@ int pivot(int left, int right, int arr[]){
 int quickSort(int left, int right, int arr[]){
   int npivot = pivot(left, right, arr);
   printf("left = %d, right  = %d, pivotIndex  = %d \n",left, right, npivot);
-    if (left > right){
-      printf("moving up stack\n");
-    }
+    // if (left > right){
+    //   printf("moving up stack\n");
+    // }
   if (left < right)
   {
-      /* pi is partitioning index, arr[p] is now
-         at right place */
-
-
-
       // Separately sort elements before
       // partition and after partition
+      printf("lower partition\n\n");
       quickSort(left, npivot - 1, arr);
+      printf("upper partition\n\n");
       quickSort(npivot + 1, right, arr);
   }
 }
@@ -54,9 +51,8 @@ int quickSort(int left, int right, int arr[]){
 
 int main(int argc, char const *argv[]) {
 
-  quickSort(0,9, num);
-  for (int i=0; i < 10; i ++){
-    printf("\n ");
+  quickSort(0,20, num);
+  for (int i=0; i < 20; i ++){
     printf("%d ", num[i]);
   }
   return 0;
