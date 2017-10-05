@@ -10,6 +10,7 @@
 #define MAXNAMELENGTH 15
 #include <stdio.h>
 #include <stdlib.h>
+
 //Define structure to hold student data
 struct StudentRecord
 {
@@ -20,7 +21,13 @@ struct StudentRecord
 };
 
 
-
+int swap(SRecords *a, SRecords *b){
+  //printf("swapping %d, with %d\n", a, b);
+  SRecords temp = *a;
+  *a = *b;
+  *b = temp;
+  // parr(num);
+}
 int main(int argc, char * argv[]) {
 
 	struct StudentRecord SRecords[MAXRECORDS];
@@ -58,7 +65,11 @@ int main(int argc, char * argv[]) {
 	}
 
 	fclose(MarksDataFile);
-
+	for(recordnum=0;recordnum<numrecords;recordnum++){
+		printf("%s %s %d %d\n",SRecords[recordnum].FirstNames,SRecords[recordnum].LastNames,SRecords[recordnum].IDNums, SRecords[recordnum].Marks);
+	}
+	printf("A total of %d records printed.\n",numrecords);
+ swap(&SRecords[1],&SRecords[2]);
 
 	//Print out data as read in
 	for(recordnum=0;recordnum<numrecords;recordnum++){
