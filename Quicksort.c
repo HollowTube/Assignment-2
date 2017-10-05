@@ -1,33 +1,32 @@
 #include<stdio.h>
-int num[20] = {15,98,160,1341,69,12,12,16,14,23,153,256,20,485,264,985,1002,521,785,111};
+int num[15] = {15,98,160,1341,50,15,222,56,64,156,764,345,745,345,234};
 int swap(int a, int b, int arr[]){
+  //printf("swapping %d, with %d\n", a, b);
   int temp = arr[a];
   arr[a] = arr[b];
   arr[b] = temp;
-  // for (int i=0; i < 10; i ++){
-  //   printf("%d ", num[i]);
-  // }
+  // parr(num);
+}
+int parr(int arr[]){
+  for (int i=0; i < 15; i ++){
+    printf("%d ", num[i]);
+  }
+  printf("\n");
 }
 
 int pivot(int left, int right, int arr[]){
   int pivot  = arr[left]; //pivot value defined as first element in partition
   int i = left; //storing location of last swap, also tracks the number of elements below partition
-  for (int k = left + 1; k<=right; k++ ){
+  for (int k = left + 1; k<=right-1; k++ ){
     // printf("arr[k] = %d, i = %d\n", arr[k], i);
     if(arr[k] <= pivot){
       i++;
       swap(i,k,arr);
       //printf("Swap\n" );
-      // for (int i=0; i < 10; i ++){
-      //   printf("%d", num[i]);
-      // }
-      // printf("\n");
     }
   }
   swap(left, i, arr);
-  for (int i=0; i < 20; i ++){
-    printf("%d ", num[i]);
-  }
+  parr(num);
   printf("\n");
   return  i;
 }
@@ -47,13 +46,9 @@ int quickSort(int left, int right, int arr[]){
       quickSort(npivot + 1, right, arr);
   }
 }
-
-
 int main(int argc, char const *argv[]) {
-
-  quickSort(0,20, num);
-  for (int i=0; i < 20; i ++){
-    printf("%d ", num[i]);
-  }
+  parr(num);
+  quickSort(0,15, num);
+  parr(num);
   return 0;
 }
