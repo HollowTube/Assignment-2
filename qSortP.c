@@ -1,6 +1,6 @@
 #include<stdio.h>
 int num[15] = {15,98,160,1341,50,15,222,56,64,156,764,345,745,345,234};
-int swap(int *a, int *b, int *arr[]){
+int swap(int a, int b, int arr[]){
   //printf("swapping %d, with %d\n", a, b);
   int temp = a;
   a = b;
@@ -46,10 +46,6 @@ int quickSort(int left, int right, int arr[]){
   }
 }
 int main(int argc, char const *argv[]) {
-  // int i  = sizeof(num)/sizeof(int);
-  // printf("%d",i);
-  // int length = sizeof(num)/sizeof(int);
-  // printf("%d\n",length );
   parr(num);
   quickSort(0,15, num);
   parr(num);

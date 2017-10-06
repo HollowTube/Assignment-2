@@ -7,8 +7,8 @@ int main () {
    int ret;
 
 
-   strcpy(str1, "Z");
-   strcpy(str2, "A");
+   strcpy(str1, "George");
+   strcpy(str2, "Hope");
 
    ret = strcmp(str1, str2);
 

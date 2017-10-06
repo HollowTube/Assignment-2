@@ -1,37 +1,24 @@
 #include<stdio.h>
-// int parr(int arr[]){
-//   for (int i=0; i < 5; i ++){
-//     printf("%d ", arr[i]);
-//   }
-//   printf("\n");
-// }
-// int swap(int** a, int** b, int *arr){
-//   int *temp = *arr[a];
-//   *arr[a] = *arr[b];
-//   *arr[b] = temp;
-// }
+
 struct items{
   int price;
 };
 
-// void swap1(struct items *a struct items *b){
-//   struct items t = *a;
-//   *a = *b;
-//   *b = t;
-// }
+//swaping values of an array using pointers
+void swap1(int* a, int* b){
+  int *t = *a;
+  *a = *b;
+  *b = t;
+}
 
-// void swap2(int a, int b, struct items *arr[]){
-//   struct items t = &arr[a];
-//   arr[a] = &arr[b];
-//   &arr[b] = t;
-//   printf("done");
-// }
+//swaping array of pointers of a struct
 void swap2(int a, int b, struct items *arr[]){
   struct items *t = arr[a];
   arr[a] = arr[b];
   arr[b] = t;
 }
 
+//swaping array of structs (values directly)
 void swap(int a, int b, struct items arr[2]){
   struct items t = arr[a];
   arr[a] = arr[b];
