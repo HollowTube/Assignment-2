@@ -60,7 +60,29 @@ int quickSort(int left, int right, struct StudentRecord *arr[]){
       quickSort(npivot +1 , right, arr);
   }
 }
-
+int binarySearch(char goal[15], struct StudentRecord *arr[]){
+  int left = 0;
+  int right  = 50;
+  int middle  = (left + right)/2;
+  while (left <= right){
+    if(strcmp(arr[middle]->LastNames ,goal) <	0){
+      printf( "> %s \n",arr[middle]->LastNames);
+      left = middle + 1;
+    }
+    else if(strcmp(arr[middle]->LastNames ,goal) ==	0){
+      printf("found at location %d \n", middle);
+      return middle;
+    }
+    else{
+      printf( "<%s \n", arr[middle]->LastNames);
+      right = middle - 1;
+    }
+    middle  = (left + right)/2;
+  }
+  if(left > right){
+    printf("not found");
+  }
+}
 int main(int argc, char * argv[]) {
 
 	struct StudentRecord SRecords[MAXRECORDS];
@@ -98,21 +120,12 @@ int main(int argc, char * argv[]) {
 	}
 
 	fclose(MarksDataFile);
-
-	int ret = strcmp(SRecords[0].FirstNames , SRecords[1].FirstNames);
-	if(ret < 0) {
-		 printf("str1 is less than str2");
-	} else if(ret > 0) {
-		 printf("str2 is less than str1");
-	} else {
-		 printf("str1 is equal to str2");
-	}
 	//Print out data as read in
 	//actual values
 	for(recordnum=0;recordnum<numrecords;recordnum++){
 		printf("%s\n",pSRecords[recordnum]->LastNames);
 	}
-	quickSort(0,50,pSRecords);
+	quickSort(0,49,pSRecords);
 	printf("\n\n\n");
 	for(recordnum=0;recordnum<numrecords;recordnum++){
 		printf("%s\n",SRecords[recordnum].LastNames);
@@ -121,11 +134,11 @@ int main(int argc, char * argv[]) {
 	for(recordnum=0;recordnum<numrecords;recordnum++){
 		printf("%s\n",pSRecords[recordnum]->LastNames);
 	}
+	char name[15]  = "Tait";
+	int query = binarySearch(name, pSRecords);
 	// printf("A total of %d records printed.\n",numrecords);
 	// swap(0,1,pSRecords);
-	// for(recordnum=0;recordnum<2;recordnum++){
-	// 	printf("%s %s %d %d\n",SRecords[recordnum].FirstNames,SRecords[recordnum].LastNames,SRecords[recordnum].IDNums, SRecords[recordnum].Marks);
-	// }
+		printf("%s %s %d %d\n",pSRecords[query]->FirstNames,pSRecords[query]->LastNames,pSRecords[query]->IDNums, pSRecords[query]->Marks);
 	// for(recordnum=0;recordnum<2;recordnum++){
 	// 	printf("%s %s %d %d\n",pSRecords[recordnum]->FirstNames);
 	// }
