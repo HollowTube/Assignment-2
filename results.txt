@@ -1,0 +1,31 @@
+Name: Tri-tin Truong
+Student Id: 260806112
+
+C:\Programming\School\Assignment-2>lookup NamesIds.txt marks.txt Tait
+The following record was found:
+Name: Suzi Tait
+Id: 2519
+Grade :82
+C:\Programming\School\Assignment-2>lookup NamesIds.txt marks.txt Mushrush
+The following record was found:
+Name: Felicita Mushrush
+Id: 2825
+Grade :76
+C:\Programming\School\Assignment-2>lookup NamesIds.txt marks.txt Daggett
+The following record was found:
+Name: Yuonne Daggett
+Id: 2029
+Grade :74
+C:\Programming\School\Assignment-2>lookup NamesIds.txt marks.txt Spece
+The following record was found:
+Name: Matilde Spece
+Id: 2917
+Grade :68
+C:\Programming\School\Assignment-2>lookup NamesIds.txt marks.txt Aylor
+The following record was found:
+Name: Francene Aylor
+Id: 2728
+Grade :72
+C:\Programming\School\Assignment-2>lookup NamesIds.txt marks.txt foo
+No student record found for student with last name foo
+C:\Programming\School\Assignment-2>

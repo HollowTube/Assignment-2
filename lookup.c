@@ -21,12 +21,15 @@ struct StudentRecord
 	int IDNums;
 	int Marks;
 };
+
+//swaping a pointer array
 void swap(int a, int b, struct StudentRecord *arr[MAXRECORDS]){
   struct StudentRecord *t = arr[a];
   arr[a] = arr[b];
   arr[b] = t;
 }
 
+//finds the new pivot and sorts the partition
 int pivot(int left, int right, struct StudentRecord *arr[]){
   int i = left; //storing location of last swap, also tracks the number of elements below partition
   for (int k = left + 1; k<=right; k++ ){
@@ -34,25 +37,20 @@ int pivot(int left, int right, struct StudentRecord *arr[]){
     if(strcmp(arr[k]->LastNames , arr[left]->LastNames) <= 	0){
       i++;
       swap(i,k,arr);
-      //printf("Swap\n" );
     }
   }
   swap(left, i, arr);
   return  i;
 }
+
 int quickSort(int left, int right, struct StudentRecord *arr[]){
   int npivot = pivot(left, right, arr);
   //printf("left = %d, right  = %d, pivotIndex  = %d \n",left, right, npivot);
-    // if (left > right){
-    //   printf("moving up stack\n");
-    // }
   if (left < right)
   {
-      // Separately sort elements before
-      // partition and after partition
-    //  printf("lower partition\n\n");
+    //  lower partition
       quickSort(left, npivot - 1, arr);
-      //printf("upper partition\n\n");
+      //upper partition
       quickSort(npivot +1 , right, arr);
   }
 }
@@ -66,7 +64,7 @@ int binarySearch(char goal[15], struct StudentRecord *arr[]){
       //printf( "> %s \n",arr[middle]->LastNames);
       left = middle + 1;
     }
-    else if(strcmp(arr[middle]->LastNames ,goal) ==	0){
+    else if(strcmp(arr[middle]->LastNames ,goal) ==	0){ //goal found
     //  printf("found at location %d \n", middle);
       return middle;
     }
@@ -127,7 +125,7 @@ int main(int argc, char * argv[]) {
 	quickSort(0,49,pSRecords);
 	int query = binarySearch(name, pSRecords);
   if(query != 0){
-  	printf("Student record for ID %d\nName: %s %s \nId: %d \nGrade :%d\n" ,pSRecords[query]->IDNums,pSRecords[query]->FirstNames,pSRecords[query]->LastNames, pSRecords[query]->IDNums, pSRecords[query]->Marks);
+  	printf("The following record was found:\nName: %s %s \nId: %d \nGrade :%d" ,pSRecords[query]->FirstNames,pSRecords[query]->LastNames, pSRecords[query]->IDNums, pSRecords[query]->Marks);
   }
   else {
     printf("No student record found for student with last name %s", name);

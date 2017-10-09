@@ -19,6 +19,5 @@ int main () {
    } else {
       printf("str1 is equal to str2");
    }
-
    return(0);
 }
