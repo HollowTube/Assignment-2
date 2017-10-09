@@ -32,8 +32,7 @@ void swap(int a, int b, struct StudentRecord *arr[MAXRECORDS]){
 //finds the new pivot and sorts the partition
 int pivot(int left, int right, struct StudentRecord *arr[]){
   int i = left; //storing location of last swap, also tracks the number of elements below partition
-  for (int k = left + 1; k<=right; k++ ){
-    // printf("arr[k] = %d, i = %d\n", arr[k], i);
+  for (int k = left + 1; k<=right; k++ ){ //starting pivot value is first element in partition
     if(strcmp(arr[k]->LastNames , arr[left]->LastNames) <= 	0){
       i++;
       swap(i,k,arr);
@@ -45,13 +44,12 @@ int pivot(int left, int right, struct StudentRecord *arr[]){
 
 int quickSort(int left, int right, struct StudentRecord *arr[]){
   int npivot = pivot(left, right, arr);
-  //printf("left = %d, right  = %d, pivotIndex  = %d \n",left, right, npivot);
   if (left < right)
   {
-    //  lower partition
-      quickSort(left, npivot - 1, arr);
-      //upper partition
-      quickSort(npivot +1 , right, arr);
+  	//lower partition
+    quickSort(left, npivot - 1, arr);
+    //upper partition
+    quickSort(npivot +1 , right, arr);
   }
 }
 int binarySearch(char goal[15], struct StudentRecord *arr[]){
@@ -59,16 +57,18 @@ int binarySearch(char goal[15], struct StudentRecord *arr[]){
   int right  = 50;
   int middle  = (left + right)/2;
   while (left <= right){
-    if(strcmp(arr[middle]->LastNames ,goal) <	0){ //try higher
-
+		//try higher
+    if(strcmp(arr[middle]->LastNames ,goal) <	0){
       //printf( "> %s \n",arr[middle]->LastNames);
       left = middle + 1;
     }
-    else if(strcmp(arr[middle]->LastNames ,goal) ==	0){ //goal found
-    //  printf("found at location %d \n", middle);
+		//goal found
+    else if(strcmp(arr[middle]->LastNames ,goal) ==	0){
+    	//printf("found at location %d \n", middle);
       return middle;
     }
-    else{ //try lower
+		//try lower
+    else{
       //printf( "<%s \n", arr[middle]->LastNames);
       right = middle - 1;
     }
@@ -120,9 +120,9 @@ int main(int argc, char * argv[]) {
 	    nummarks++;
 	}
 	fclose(MarksDataFile);
-	//Print out data as read in
-	//actual values
+	//sort array according to lastname
 	quickSort(0,49,pSRecords);
+	//binary search the query
 	int query = binarySearch(name, pSRecords);
   if(query != 0){
   	printf("The following record was found:\nName: %s %s \nId: %d \nGrade :%d" ,pSRecords[query]->FirstNames,pSRecords[query]->LastNames, pSRecords[query]->IDNums, pSRecords[query]->Marks);
